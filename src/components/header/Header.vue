@@ -32,13 +32,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { routes } from '@/router/index';
 
 const router = useRouter();
 
 const popupShow = ref<boolean>(false);
+
+watch(
+  router.currentRoute,
+  () => {
+    popupShow.value = false;
+  },
+  { deep: true }
+);
 </script>
 
 <style lang="less" scoped>

@@ -12,7 +12,7 @@
 - [vue-router](https://router.vuejs.org/)
 - [mockjs](http://mockjs.com/)
 - [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock)
-- [vuex（待补充）](https://vuex.vuejs.org/)
+- [pinia（全局状态管理，比vuex更轻量，vue官方推荐）](https://pinia.vuejs.org/)
 - [nutui](https://nutui.jd.com/)
 
 
@@ -37,7 +37,7 @@
 │   ├── pages            页面目录
 │   ├── router           路由配置
 │   ├── types            ts类型定义
-│   ├── store            vuex
+│   ├── store            pinia状态管理
 │   └── utils            基础工具包
 ├── test                 测试用例
 ├── tsconfig.json        ts配置
