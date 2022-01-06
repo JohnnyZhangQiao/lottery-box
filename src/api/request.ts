@@ -1,8 +1,4 @@
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosResponseTransformer
-} from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
 import {
   IRequestParams,
   IRequestResponse,

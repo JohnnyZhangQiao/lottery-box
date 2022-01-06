@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Index from '@/pages/Index.vue';
+import { isLogin } from '@/utils/userLogin';
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -15,11 +16,17 @@ export const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/pages/Login.vue'),
+  },
+  {
     path: '/user',
     name: 'User',
     component: () => import('@/pages/User.vue'),
     meta: {
-      navigation: '个人中心'
+      navigation: '个人中心',
+      requireAuth: true
     }
   }
 ];
@@ -27,6 +34,21 @@ export const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (isLogin()) {
+      next();
+    } else {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      });
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

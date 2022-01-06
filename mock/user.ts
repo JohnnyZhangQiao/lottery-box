@@ -6,7 +6,7 @@ export default [
     url: '/api/userInfo',
     method: 'post',
     timeout: Math.floor(Math.random() * (1200 + 1)),
-    response: ({ query }) => {
+    response: ({ body }) => {
       return {
         code: 0,
         message: 'success',
@@ -28,6 +28,29 @@ export default [
           ]
         }
       };
+    }
+  },
+  {
+    url: '/api/userAuthority',
+    method: 'post',
+    timeout: Math.floor(Math.random() * (1200 + 1)),
+    response: ({ body }) => {
+      const { username, password } = body;
+      if (username && password) {
+        return {
+          code: 0,
+          message: 'success',
+          data: {
+            token: uuidv4()
+          }
+        };
+      } else {
+        return {
+          code: 1001,
+          message: '账号不存在或密码错误',
+          data: {}
+        };
+      }
     }
   }
 ] as MockMethod[];

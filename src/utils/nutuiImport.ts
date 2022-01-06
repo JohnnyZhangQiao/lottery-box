@@ -1,4 +1,5 @@
 import {
+  Button,
   Swiper,
   SwiperItem,
   Popup,
@@ -8,4 +9,4 @@ import {
   Skeleton
 } from '@nutui/nutui';
 
-export default { Swiper, SwiperItem, Popup, Empty, CellGroup, Cell, Skeleton };
+export default { Button, Swiper, SwiperItem, Popup, Empty, CellGroup, Cell, Skeleton };
