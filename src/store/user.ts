@@ -9,9 +9,16 @@ export const useUser = defineStore('useUser', {
     avatar: ''
   }),
   actions: {
-    setItem(key: string, value: any) {
-      // @ts-ignore
-      this[key] = value;
+    setItem(data: Record<string, any>) {
+      if (typeof data === 'object') {
+        Object.keys(data).forEach((key: string) => {
+          // @ts-ignore
+          if (this.hasOwnProperty(key)) {
+            // @ts-ignore
+            this[key] = data[key];
+          }
+        });
+      }
     }
   }
 });

@@ -1,13 +1,18 @@
-import axios, { AxiosError, AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosError, AxiosRequestConfig } from 'axios';
 import {
   IRequestParams,
   IRequestResponse,
   TBackData
-} from '../types/global/request';
+} from '@/types/global/request';
 import { Toast } from '@nutui/nutui';
 
+interface MyAxiosInstance extends AxiosInstance {
+  (config: AxiosRequestConfig): Promise<any>;
+  (url: string, config?: AxiosRequestConfig): Promise<any>;
+}
+
 export class Request {
-  public static axiosInstance: AxiosInstance;
+  public static axiosInstance: MyAxiosInstance;
 
   public static init() {
     // 创建axios实例

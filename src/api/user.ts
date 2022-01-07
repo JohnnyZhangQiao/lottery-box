@@ -1,10 +1,9 @@
-import { AxiosPromise } from 'axios';
 import { Request } from './request';
 import { IRequestParams } from '@/types/global/request';
 import { TUser } from '@/types/user/info';
 
 export default {
-  userAuthority: (options?: IRequestParams): AxiosPromise<string> =>
+  userAuthority: (options?: IRequestParams): Promise<{ token: string }> =>
     Request.axiosInstance({
       url: '/userAuthority',
       method: 'post',
@@ -13,7 +12,7 @@ export default {
       ...options
     }),
 
-  userInfo: (options?: IRequestParams): AxiosPromise<TUser> =>
+  userInfo: (options?: IRequestParams): Promise<TUser> =>
     Request.axiosInstance({
       url: '/userInfo',
       method: 'post',

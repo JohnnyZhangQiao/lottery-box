@@ -6,7 +6,7 @@ export default [
     url: '/api/userInfo',
     method: 'post',
     timeout: Math.floor(Math.random() * (1200 + 1)),
-    response: ({ body }) => {
+    response: () => {
       return {
         code: 0,
         message: 'success',
@@ -14,7 +14,7 @@ export default [
           userId: uuidv4(),
           username: 'Q仔',
           avatar:
-            'https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png',
+            'https://img1.baidu.com/it/u=2071723855,1373004158&fm=26&fmt=auto',
           box: [
             {
               boxImg:
