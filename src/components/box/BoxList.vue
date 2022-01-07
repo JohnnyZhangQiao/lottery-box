@@ -1,6 +1,6 @@
 <template>
-  <ul class="box-list">
-    <li :key="key" class="box-item" v-for="(item, key) in list">
+  <ul class="box-list" v-if="list.length > 0">
+    <li :key="key" class="box-item" v-for="(item, key) in props.list">
       <div class="box-img">
         <img :src="item.boxImg" :alt="item.title" />
         <div class="box-tag">
@@ -16,21 +16,31 @@
       </div>
     </li>
   </ul>
+  <p class="loading-styl" v-if="props.loading">加载中...</p>
+  <nut-empty
+    description="暂无盲盒~"
+    v-if="list.length === 0 && !props.loading"
+  ></nut-empty>
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import { defineProps, withDefaults } from 'vue';
 import { TBox } from '@/types/index/box';
 
-defineProps({
-  list: {
-    type: Array as PropType<TBox[]>
-  }
+interface IProps {
+  list: TBox[];
+  loading?: boolean;
+}
+
+const props = withDefaults(defineProps<IProps>(), {
+  list: () => [],
+  loading: false
 });
 </script>
 
 <style lang="less" scoped>
 .box-list {
+  margin-bottom: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
@@ -78,5 +88,10 @@ defineProps({
       }
     }
   }
+}
+.loading-styl {
+  margin: 0.5rem auto;
+  font-size: 0.42rem;
+  text-align: center;
 }
 </style>

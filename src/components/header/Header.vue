@@ -52,7 +52,6 @@ const popupShow = ref<boolean>(false);
  */
 function fetchUserInfo() {
   request.user.userInfo().then(data => {
-    console.log(data);
     appStore.useUser.setItem({
       avatar: data.avatar,
       username: data.username,
