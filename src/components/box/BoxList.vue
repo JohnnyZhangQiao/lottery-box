@@ -45,6 +45,7 @@ const props = withDefaults(defineProps<IProps>(), {
   flex-wrap: wrap;
   justify-content: left;
   font-size: 0.42rem;
+  text-align: left;
   .box-item {
     margin: 0.5rem 2.5% 0 2.5%;
     width: 45%;

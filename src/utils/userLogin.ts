@@ -33,5 +33,25 @@ export const login = (username: string, password: string) => {
         appStore.useUser.setItem({ token }); // 设置pinia状态
         return true;
       }
+    })
+    .then(data => {
+      // 登录成功才会获取用户信息
+      if (data) {
+        fetchUserInfo();
+      }
+      return data;
     });
 };
+
+/**
+ * 获取用户信息
+ */
+export const fetchUserInfo = () => {
+  request.user.userInfo().then(data => {
+    appStore.useUser.setItem({
+      avatar: data.avatar,
+      username: data.username,
+      userId: data.userId
+    });
+  });
+}
