@@ -1,15 +1,14 @@
 import request from '@/api/index';
-import appStore from "@/store";
+import appStore from '@/store';
 
 /**
  * 是否登录
  */
 export const isLogin = (): boolean => {
-
   if (appStore.useUser.token) return true;
 
   const token = localStorage.getItem('ACCESS_TOKEN');
-  appStore.useUser.setItem('token', token || '');
+  appStore.useUser.setItem({ token: token || '' });
   return !!token;
 };
 
@@ -31,7 +30,7 @@ export const login = (username: string, password: string) => {
       if (token) {
         localStorage.setItem('ACCESS_TOKEN', token);
 
-        appStore.useUser.setItem('token', token); // 设置pinia状态
+        appStore.useUser.setItem({ token }); // 设置pinia状态
         return true;
       }
     });

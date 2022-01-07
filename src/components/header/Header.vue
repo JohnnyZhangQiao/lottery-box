@@ -6,7 +6,11 @@
       <span>潮玩盲盒</span>
     </div>
     <div class="user-site" @click="router.push('/user')">
-      <span>Q仔</span>
+      <span v-if="!isLogin()">登录</span>
+      <div class="user-icon" v-else>
+        <img :src="appStore.useUser.avatar" class="avatar" />
+        <div class="user-name">{{ appStore.useUser.username }}</div>
+      </div>
     </div>
   </div>
 
@@ -34,11 +38,31 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { routes } from '@/router/index';
+import { routes } from '@/router';
+import request from '@/api/index';
+import appStore from '@/store/index';
+import { isLogin } from '@/utils/userLogin';
 
 const router = useRouter();
 
 const popupShow = ref<boolean>(false);
+
+/**
+ * 获取用户信息
+ */
+function fetchUserInfo() {
+  request.user.userInfo().then(data => {
+    appStore.useUser.setItem({
+      avatar: data.avatar,
+      username: data.username,
+      userId: data.userId
+    });
+  });
+}
+
+if (isLogin()) {
+  fetchUserInfo();
+}
 
 watch(
   router.currentRoute,
@@ -74,6 +98,30 @@ watch(
       margin-right: 0.1rem;
       vertical-align: middle;
       height: 1rem;
+    }
+  }
+  .user-site {
+    font-size: 0.36rem;
+    color: #ff3f01;
+    .user-icon {
+      display: flex;
+      align-items: center;
+      margin: 0.1rem auto;
+      padding: 0 0.1rem;
+      height: 0.8rem;
+      background-color: #ffe4db;
+      border-radius: 0.4rem;
+      .avatar {
+        height: 0.6rem;
+        border-radius: 0.3rem;
+      }
+      .user-name {
+        margin: 0 0.3rem;
+        max-width: 1.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
   }
 }
