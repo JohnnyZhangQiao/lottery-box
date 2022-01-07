@@ -39,26 +39,12 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { routes } from '@/router';
-import request from '@/api/index';
 import appStore from '@/store/index';
-import { isLogin } from '@/utils/userLogin';
+import { isLogin, fetchUserInfo } from '@/utils/userLogin';
 
 const router = useRouter();
 
 const popupShow = ref<boolean>(false);
-
-/**
- * 获取用户信息
- */
-function fetchUserInfo() {
-  request.user.userInfo().then(data => {
-    appStore.useUser.setItem({
-      avatar: data.avatar,
-      username: data.username,
-      userId: data.userId
-    });
-  });
-}
 
 if (isLogin()) {
   fetchUserInfo();
