@@ -1,6 +1,11 @@
 <template>
   <ul class="box-list" v-if="list.length > 0">
-    <li :key="key" class="box-item" v-for="(item, key) in props.list">
+    <li
+      :key="key"
+      class="box-item"
+      v-for="(item, key) in props.list"
+      @click="router.push({ path: '/boxDetail', query: { bId: item.id } })"
+    >
       <div class="box-img">
         <img :src="item.boxImg" :alt="item.title" />
         <div class="box-tag">
@@ -25,6 +30,8 @@
 
 <script setup lang="ts">
 import { defineProps, withDefaults } from 'vue';
+import { useRouter } from 'vue-router';
+
 import { TBox } from '@/types/index/box';
 
 interface IProps {
@@ -36,6 +43,8 @@ const props = withDefaults(defineProps<IProps>(), {
   list: () => [],
   loading: false
 });
+
+const router = useRouter();
 </script>
 
 <style lang="less" scoped>

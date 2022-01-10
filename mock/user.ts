@@ -12,11 +12,12 @@ export default [
         message: 'success',
         data: {
           userId: uuidv4(),
-          username: 'Q仔',
+          username: '你的名字',
           avatar:
             'https://img1.baidu.com/it/u=2071723855,1373004158&fm=26&fmt=auto',
           box: [
             {
+              id: 10012003,
               boxImg:
                 'https://www.ibox.art/file/oss/test/image/nft-goods/5e13232dc52a422fb2b51e74bc6cb3fb.png?style=st6',
               status: 5,
