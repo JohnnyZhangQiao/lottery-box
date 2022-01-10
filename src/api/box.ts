@@ -10,5 +10,14 @@ export default {
       desc: '获取盲盒列表',
       isJSON: true,
       ...options
+    }),
+
+  boxDetail: (options?: IRequestParams): Promise<any> =>
+    Request.axiosInstance({
+      url: '/boxDetail',
+      method: 'post',
+      desc: '获取盲盒详情',
+      isJSON: true,
+      ...options
     })
 };

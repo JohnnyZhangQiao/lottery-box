@@ -16,6 +16,11 @@ export const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/boxDetail',
+    name: 'BoxDetail',
+    component: () => import('@/pages/boxDetail.vue'),
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/pages/Login.vue'),
