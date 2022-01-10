@@ -3,7 +3,7 @@
     <nut-icon name="left" size="0.5rem" color="#fff"></nut-icon>
   </div>
   <div class="detail-container" v-if="!loading">
-    <img src="~@/assets/images/light3.png" class="header-bg" />
+    <img src="~@/assets/images/light_bg.png" class="header-bg" />
     <div class="box-img">
       <img :src="info.boxImg" />
     </div>
