@@ -3,8 +3,9 @@ import vue from '@vitejs/plugin-vue';
 import styleImport from 'vite-plugin-style-import';
 
 import { viteMockServe } from 'vite-plugin-mock';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-const path = require('path')
+const path = require('path');
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }: ConfigEnv) => {
@@ -31,7 +32,14 @@ export default defineConfig(({ command }: ConfigEnv) => {
             }
           }
         ]
-      })
+      }),
+      !!process.env.REPORT
+        ? visualizer({
+            open: true,
+            gzipSize: true,
+            filename: path.resolve(__dirname, 'dist/stats.html')
+          })
+        : null
     ],
     resolve: {
       alias: [
@@ -61,7 +69,12 @@ export default defineConfig(({ command }: ConfigEnv) => {
         }
       },
       outDir: 'dist', //指定输出路径
-      assetsDir: 'assets' //指定生成静态资源的存放路径
+      assetsDir: 'assets', //指定生成静态资源的存放路径
+      rollupOptions: {
+        buildEnd: (data) => {
+          console.log('end:', data)
+        }
+      }
     }
   };
 });
