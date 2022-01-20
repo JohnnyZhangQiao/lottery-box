@@ -5,6 +5,8 @@ import styleImport from 'vite-plugin-style-import';
 import { viteMockServe } from 'vite-plugin-mock';
 import { visualizer } from 'rollup-plugin-visualizer';
 
+import VueSetupExtend from 'vite-plugin-vue-setup-extend';
+
 const path = require('path');
 
 // https://vitejs.dev/config/
@@ -13,6 +15,8 @@ export default defineConfig(({ command }: ConfigEnv) => {
     base: './',
     plugins: [
       vue(),
+      // script setup语法糖增强插件
+      VueSetupExtend(),
       // mock
       viteMockServe({
         mockPath: 'mock', //mock文件地址
@@ -71,8 +75,8 @@ export default defineConfig(({ command }: ConfigEnv) => {
       outDir: 'dist', //指定输出路径
       assetsDir: 'assets', //指定生成静态资源的存放路径
       rollupOptions: {
-        buildEnd: (data) => {
-          console.log('end:', data)
+        buildEnd: data => {
+          console.log('end:', data);
         }
       }
     }

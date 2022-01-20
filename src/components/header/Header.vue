@@ -35,7 +35,7 @@
   </nut-popup>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Header">
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { routes } from '@/router';

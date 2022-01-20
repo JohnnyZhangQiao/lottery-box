@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Index">
 import { reactive, ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import request from '../api/index';
 import { useRouter } from 'vue-router';

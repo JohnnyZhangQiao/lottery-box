@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="Login">
 import { ref } from 'vue';
 import { Toast } from '@nutui/nutui';
 import { login } from '@/utils/userLogin';
