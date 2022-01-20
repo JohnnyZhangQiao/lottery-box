@@ -45,7 +45,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="BoxDetail">
 import { ref } from 'vue';
 import momnent from 'moment';
 import { useRouter, LocationQueryValue } from 'vue-router';

@@ -28,7 +28,7 @@
   ></nut-empty>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="BoxList">
 import { defineProps, withDefaults } from 'vue';
 import { useRouter } from 'vue-router';
 

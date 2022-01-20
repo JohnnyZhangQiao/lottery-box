@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="App">
 import Header from './components/header/Header.vue';
 </script>
 

@@ -33,7 +33,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="User">
 import { ref, reactive } from 'vue';
 import request from '@/api/index';
 import { TUser } from '@/types/user/info';
