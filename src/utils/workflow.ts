@@ -23,12 +23,12 @@ export const initialize = async (app: any) => {
   });
   console.trace('nutui组件加载完成...');
 
-  // 挂载路由
-  app.use(router);
-  console.trace('router已挂载...');
-
   // 注册pinia状态管理库
   app.use(createPinia());
   registerStore();
   console.trace('pinia状态库已注册...');
+
+  // 挂载路由
+  app.use(router);
+  console.trace('router已挂载...');
 };
